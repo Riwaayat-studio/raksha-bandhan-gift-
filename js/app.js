@@ -103,20 +103,59 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(el);
     });
 
-    // 5. Interactive Rakhi Button Animation
+    // 5. Interactive 3D Rakhi Drop Animation
     const rakhiBtn = document.getElementById('rakhi-btn');
     const rakhiMessage = document.getElementById('rakhi-message');
+    const real3DRakhi = document.getElementById('real-3d-rakhi');
 
-    rakhiBtn.addEventListener('click', () => {
-        anime({
-            targets: rakhiBtn,
-            scale: [1, 0.8], opacity: [1, 0], duration: 800, easing: 'easeInQuad',
-            complete: () => {
-                rakhiBtn.style.display = 'none';
-                rakhiMessage.style.display = 'block';
-                anime({ targets: rakhiMessage, translateY: [20, 0], opacity: [0, 1], duration: 1200, easing: 'easeOutExpo' });
-                anime({ targets: particlesMaterial, size: 0.5, opacity: 1, duration: 1000, direction: 'alternate', easing: 'easeInOutSine' });
-            }
+    if (rakhiBtn && real3DRakhi) {
+        rakhiBtn.addEventListener('click', () => {
+            // Button ko fade out kardo
+            anime({
+                targets: rakhiBtn,
+                scale: [1, 0.8], 
+                opacity: [1, 0], 
+                duration: 800, 
+                easing: 'easeInQuad',
+                complete: () => {
+                    rakhiBtn.style.display = 'none';
+                    
+                    // 3D Rakhi ko upar se drop karwao!
+                    anime({
+                        targets: real3DRakhi,
+                        opacity: [0, 1],
+                        translateY: [-150, 0], // Upar se center mein aayega
+                        scale: [0.5, 1.2], // Thoda bada hokar dikhega
+                        duration: 1800,
+                        easing: 'easeOutElastic(1, 0.5)', // Spring effect
+                        complete: () => {
+                            // Message display
+                            rakhiMessage.style.display = 'block';
+                            anime({ 
+                                targets: rakhiMessage, 
+                                translateY: [20, 0], 
+                                opacity: [0, 1], 
+                                duration: 1200, 
+                                easing: 'easeOutExpo' 
+                            });
+
+                            // Background particles boom
+                            anime({ 
+                                targets: particlesMaterial, 
+                                size: 0.6, 
+                                opacity: 1, 
+                                duration: 1000, 
+                                direction: 'alternate', 
+                                easing: 'easeInOutSine' 
+                            });
+                            
+                            // User ab 3D model ko finger se rotate kar sakta hai
+                            real3DRakhi.style.pointerEvents = 'auto';
+                        }
+                    });
+                }
+            });
         });
-    });
+    }
 });
+                                  
