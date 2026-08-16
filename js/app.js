@@ -5,13 +5,38 @@ document.addEventListener("DOMContentLoaded", () => {
     function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
 
-    // 2. Audio Control Logic
+    // 2. Audio Control & Smart Auto-Play Logic
     const bgMusic = document.getElementById('bg-music');
     const musicBtn = document.getElementById('music-btn');
     const memoryVideo = document.getElementById('memory-video');
     let isPlaying = false;
+    let userInteracted = false;
 
+    // ✨ NAYA: Smart Auto-Play on First Scroll or Tap
+    const startMusic = () => {
+        if (!userInteracted) {
+            bgMusic.volume = 1.0;
+            bgMusic.play().then(() => {
+                isPlaying = true;
+                musicBtn.innerText = "🎵 Pause Music"; // Button update ho jayega
+            }).catch(err => console.log("Waiting for user interaction to play music."));
+            userInteracted = true;
+            
+            // Ek baar play hone ke baad in listeners ko hata do
+            window.removeEventListener('scroll', startMusic);
+            document.removeEventListener('click', startMusic);
+            document.removeEventListener('touchstart', startMusic);
+        }
+    };
+
+    // User jaise hi scroll ya tap karega, music start ho jayega
+    window.addEventListener('scroll', startMusic, { once: true });
+    document.addEventListener('click', startMusic, { once: true });
+    document.addEventListener('touchstart', startMusic, { once: true });
+
+    // Manual Toggle Button (Taki koi mute karna chahe toh kar sake)
     musicBtn.addEventListener('click', () => {
+        userInteracted = true; 
         if (isPlaying) {
             bgMusic.pause();
             musicBtn.innerText = "🔇 Play Music";
@@ -22,15 +47,43 @@ document.addEventListener("DOMContentLoaded", () => {
         isPlaying = !isPlaying;
     });
 
-    // Auto pause background music if video is played
-    if(memoryVideo) {
+    // ✨ NAYA: Smart Video Audio Ducking (Volume Low/High)
+    if (memoryVideo) {
+        // Jab Video Play ho -> Background Music Volume Low (15%)
         memoryVideo.addEventListener('play', () => {
             if (isPlaying) {
-                bgMusic.pause();
-                musicBtn.innerText = "🔇 Play Music";
-                isPlaying = false;
+                anime({
+                    targets: bgMusic,
+                    volume: 0.15,
+                    duration: 1000,
+                    easing: 'linear'
+                });
             }
         });
+
+        // Jab Video Pause ho ya khtam ho -> Music Volume Normal (100%)
+        memoryVideo.addEventListener('pause', () => {
+            if (isPlaying) {
+                anime({
+                    targets: bgMusic,
+                    volume: 1.0,
+                    duration: 1000,
+                    easing: 'linear'
+                });
+            }
+        });
+
+        // ✨ NAYA: Scroll Detector for Video
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Agar video screen se bahar chali jaye aur play ho rahi ho, toh video ko pause kar do
+                if (!entry.isIntersecting && !memoryVideo.paused) {
+                    memoryVideo.pause(); // Pause hote hi upar wala event music volume wapas 100% kar dega!
+                }
+            });
+        }, { threshold: 0.1 }); 
+
+        videoObserver.observe(memoryVideo);
     }
 
     // 3. Three.js Background (Ethereal Golden Particles)
@@ -124,12 +177,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     anime({
                         targets: real3DRakhi,
                         opacity: [0, 1],
-                        translateY: [-150, 0], // Upar se center mein aayega
-                        scale: [0.5, 1.2], // Thoda bada hokar dikhega
+                        translateY: [-150, 0], 
+                        scale: [0.5, 1.2], 
                         duration: 1800,
-                        easing: 'easeOutElastic(1, 0.5)', // Spring effect
+                        easing: 'easeOutElastic(1, 0.5)', 
                         complete: () => {
-                            // Message display
                             rakhiMessage.style.display = 'block';
                             anime({ 
                                 targets: rakhiMessage, 
@@ -139,7 +191,6 @@ document.addEventListener("DOMContentLoaded", () => {
                                 easing: 'easeOutExpo' 
                             });
 
-                            // Background particles boom
                             anime({ 
                                 targets: particlesMaterial, 
                                 size: 0.6, 
@@ -149,7 +200,6 @@ document.addEventListener("DOMContentLoaded", () => {
                                 easing: 'easeInOutSine' 
                             });
                             
-                            // User ab 3D model ko finger se rotate kar sakta hai
                             real3DRakhi.style.pointerEvents = 'auto';
                         }
                     });
@@ -158,4 +208,3 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-                                  
