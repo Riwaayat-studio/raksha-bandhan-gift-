@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhaaga | Ek Yaad, Ek Dhaaga</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Audio Element (Updated with rakhiaudio.mp3) -->
+    <audio id="bg-music" loop>
+        <source src="assets/rakhiaudio.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Floating Music Toggle -->
+    <button id="music-btn" class="glass-icon-btn">🎵 Play Music</button>
+
+    <!-- Three.js Canvas Background -->
+    <canvas id="webgl-canvas"></canvas>
+
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            
+            <!-- Hero Section -->
+            <section class="hero cinematic-section">
+                <div class="hero-content reveal-text">
+                    <p class="subtitle">Raksha Bandhan &mdash; Ek Yaad</p>
+                    <h1 class="title">Rakhi</h1>
+                    <p class="scroll-indicator">Scroll gently &darr;</p>
+                </div>
+            </section>
+
+            <!-- Story Section -->
+            <section class="story cinematic-section">
+                <div class="glass-card reveal-card">
+                    <h2>Reliance Fashion, Mira Road</h2>
+                    <p>Kuch saath, kuch hasi, aur aisi dosti jo colleague se family ban gayi &mdash; <span class="gold-text">Afreen, Nisha aur Madhuri.</span></p>
+                    <p>Waqt ke saath shehar badla, main Lucknow chala gaya &mdash; par jo rakhi waha bandha tha, wo aaj bhi utna hi mazboot hai.</p>
+                </div>
+            </section>
+
+            <!-- Cinematic Memory Gallery -->
+            <section class="memories cinematic-section">
+                <h2 class="section-title reveal-text">Wo Din, Wo Hasi</h2>
+                <div class="gallery-container">
+                    
+                    <!-- Group Pic 1 -->
+                    <div class="glass-card gallery-card reveal-card">
+                        <div class="media-wrapper">
+                            <img src="assets/grouppic1.jpg" alt="Group Memory 1" class="gallery-media">
+                        </div>
+                        <p class="caption">Store ke wo behtareen din...</p>
+                    </div>
+
+                    <!-- Group Pic 2 -->
+                    <div class="glass-card gallery-card reveal-card">
+                        <div class="media-wrapper">
+                            <img src="assets/grouppic2.jpg" alt="Group Memory 2" class="gallery-media">
+                        </div>
+                        <p class="caption">Masti, dosti aur ek doosre ki taang kheenchna! 😂</p>
+                    </div>
+
+                    <!-- Store Video (Updated with poster thumbnail) -->
+                    <div class="glass-card gallery-card reveal-card">
+                        <div class="media-wrapper">
+                            <video 
+                                src="assets/store-video.mp4" 
+                                poster="assets/video-thumbnail.jpg" 
+                                preload="metadata" 
+                                controls 
+                                class="gallery-media" 
+                                id="memory-video">
+                            </video>
+                        </div>
+                        <p class="caption">Diwali wale din ki masti🪔🏮✨</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Interactive Rakhi Section -->
+            <section class="interactive-rakhi cinematic-section">
+                <div class="rakhi-container reveal-card glass-card">
+                    <h2>Pyari Si Rakhi Ke Liye Shukriya — Afreen, Nisha & Madhuri"</h2>
+                    <div class="rakhi-img-wrapper">
+                        <!-- Climax Rakhi Picture -->
+                        <img src="assets/rakhipic3.jpg" alt="Rakhi Thread" class="rakhi-img">
+                    </div>
+                    <p>Distance sirf ek number hai. Tum teeno ke liye ek chhota sa digital tohfa.</p>
+                    <button id="rakhi-btn" class="gold-btn">Tap to tie Rakhi</button>
+                    <p id="rakhi-message" class="hidden-message">Rakhi Bandh Gayi! ✨ Bahut pyaar aur dua tum teeno ke liye.</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/app.js"></script>
+</body>
+</html>
