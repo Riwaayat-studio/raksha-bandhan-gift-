@@ -13,7 +13,7 @@
 </head>
 <body>
 
-    <!-- Audio Element (Updated with rakhiaudio.mp3) -->
+    <!-- Audio Element -->
     <audio id="bg-music" loop>
         <source src="assets/rakhiaudio.mp3" type="audio/mpeg">
     </audio>
@@ -57,7 +57,6 @@
                         </div>
                         <p class="caption">Store ke wo behtareen din...</p>
                     </div>
-            
 
                     <!-- Group Pic 2 -->
                     <div class="glass-card gallery-card reveal-card">
@@ -67,8 +66,7 @@
                         <p class="caption">Masti, dosti aur ek doosre ki taang kheenchna! 😂</p>
                     </div>
 
-                    
-                    <!-- Store Video (Updated with poster thumbnail) -->
+                    <!-- Store Video -->
                     <div class="glass-card gallery-card reveal-card">
                         <div class="media-wrapper">
                             <video 
@@ -86,15 +84,39 @@
                 </div>
             </section>
 
-            <!-- Interactive Rakhi Section -->
+            <!-- Original Rakhi Section (Button Removed) -->
             <section class="interactive-rakhi cinematic-section">
                 <div class="rakhi-container reveal-card glass-card">
-                    <h2>Is pyari si Rakhi Ke Liye Shukriya — Afreen, Nisha & Madhuri"</h2>
+                    <h2>Is pyari si Rakhi Ke Liye Shukriya — Afreen, Nisha & Madhuri</h2>
                     <div class="rakhi-img-wrapper">
-                        <!-- Climax Rakhi Picture -->
                         <img src="assets/rakhipic3.jpg" alt="Rakhi Thread" class="rakhi-img">
                     </div>
                     <p>Distance sirf ek number hai. Tum teeno ke liye ek chhota sa digital tohfa.</p>
+                </div>
+            </section>
+
+            <!-- NAYA: 3D Rakhi Animation Section -->
+            <section class="interactive-rakhi cinematic-section">
+                <div class="rakhi-container reveal-card glass-card">
+                    <h2>Meri Taraf Se Ek Digital Dhaaga 🎁</h2>
+                    <p style="margin-bottom: 2rem;">Neeche button par click karo aur dekho magic!</p>
+                    
+                    <!-- 3D Model Placeholder -->
+                    <div class="model-wrapper">
+                        <model-viewer 
+                            src="assets/rakhi.glb" 
+                            id="real-3d-rakhi" 
+                            class="animated-rakhi-model" 
+                            camera-controls 
+                            disable-zoom 
+                            disable-pan 
+                            shadow-intensity="1" 
+                            environment-image="neutral"
+                            auto-rotate 
+                            rotation-per-second="30deg">
+                        </model-viewer>
+                    </div>
+
                     <button id="rakhi-btn" class="gold-btn">Tap to tie Rakhi</button>
                     <p id="rakhi-message" class="hidden-message">Rakhi Bandh Gayi! ✨ Bahut pyaar aur dua tum teeno ke liye.</p>
                 </div>
@@ -107,6 +129,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+    
+    <!-- NAYA: Google Model Viewer Script for 3D GLB -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     
     <!-- Custom JS -->
     <script src="js/app.js"></script>
