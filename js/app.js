@@ -12,29 +12,27 @@ document.addEventListener("DOMContentLoaded", () => {
     let isPlaying = false;
     let userInteracted = false;
 
-    // ✨ NAYA: Smart Auto-Play on First Scroll or Tap
+    // Smart Auto-Play on First Scroll or Tap
     const startMusic = () => {
         if (!userInteracted) {
             bgMusic.volume = 1.0;
             bgMusic.play().then(() => {
                 isPlaying = true;
-                musicBtn.innerText = "🎵 Pause Music"; // Button update ho jayega
+                musicBtn.innerText = "🎵 Pause Music"; 
             }).catch(err => console.log("Waiting for user interaction to play music."));
             userInteracted = true;
             
-            // Ek baar play hone ke baad in listeners ko hata do
             window.removeEventListener('scroll', startMusic);
             document.removeEventListener('click', startMusic);
             document.removeEventListener('touchstart', startMusic);
         }
     };
 
-    // User jaise hi scroll ya tap karega, music start ho jayega
     window.addEventListener('scroll', startMusic, { once: true });
     document.addEventListener('click', startMusic, { once: true });
     document.addEventListener('touchstart', startMusic, { once: true });
 
-    // Manual Toggle Button (Taki koi mute karna chahe toh kar sake)
+    // Manual Toggle Button
     musicBtn.addEventListener('click', () => {
         userInteracted = true; 
         if (isPlaying) {
@@ -47,9 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
         isPlaying = !isPlaying;
     });
 
-    // ✨ NAYA: Smart Video Audio Ducking (Volume Low/High)
+    // Smart Video Audio Ducking (Volume Low/High)
     if (memoryVideo) {
-        // Jab Video Play ho -> Background Music Volume Low (15%)
         memoryVideo.addEventListener('play', () => {
             if (isPlaying) {
                 anime({
@@ -61,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Jab Video Pause ho ya khtam ho -> Music Volume Normal (100%)
         memoryVideo.addEventListener('pause', () => {
             if (isPlaying) {
                 anime({
@@ -73,12 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // ✨ NAYA: Scroll Detector for Video
         const videoObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                // Agar video screen se bahar chali jaye aur play ho rahi ho, toh video ko pause kar do
                 if (!entry.isIntersecting && !memoryVideo.paused) {
-                    memoryVideo.pause(); // Pause hote hi upar wala event music volume wapas 100% kar dega!
+                    memoryVideo.pause(); 
                 }
             });
         }, { threshold: 0.1 }); 
@@ -86,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         videoObserver.observe(memoryVideo);
     }
 
-    // 3. Three.js Background (Ethereal Golden Particles)
+    // 3. Three.js Background (Ethereal Baby Pink Particles 🌸)
     const canvas = document.querySelector('#webgl-canvas');
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -103,8 +97,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
+    // Yahan Color Baby Pink (0xFFB6C1) kar diya gaya hai ✨
     const particlesMaterial = new THREE.PointsMaterial({
-        size: 0.15, color: 0xE5C07B, transparent: true, opacity: 0.6, blending: THREE.AdditiveBlending
+        size: 0.15, 
+        color: 0xFFB6C1, 
+        transparent: true, 
+        opacity: 0.6, 
+        blending: THREE.AdditiveBlending
     });
 
     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
@@ -163,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (rakhiBtn && real3DRakhi) {
         rakhiBtn.addEventListener('click', () => {
-            // Button ko fade out kardo
+            
             anime({
                 targets: rakhiBtn,
                 scale: [1, 0.8], 
@@ -173,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 complete: () => {
                     rakhiBtn.style.display = 'none';
                     
-                    // 3D Rakhi ko upar se drop karwao!
+                    
                     anime({
                         targets: real3DRakhi,
                         opacity: [0, 1],
