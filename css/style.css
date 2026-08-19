@@ -1,9 +1,9 @@
 /* =========================================
-   Naya Theme: Deep Navy Blue & Rose Gold
+   Naya Theme: Deep Navy Blue & Baby Pink 🌸
 ========================================== */
 :root {
     --bg-color: #0A1128;      /* Deep Navy Blue */
-    --gold-accent: #B76E79;   /* Rose Gold */
+    --gold-accent: #FFB6C1;   /* Soft Baby Pink */
     --text-primary: #F5F5F7;
     --text-secondary: #A0A0A5;
 }
@@ -28,14 +28,14 @@ body {
 h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
 .gold-text { color: var(--gold-accent); font-style: italic; }
 
-/* Audio Button - Rose Gold Hover */
+/* Audio Button - Baby Pink Hover */
 .glass-icon-btn {
     position: fixed;
     top: 20px;
     right: 20px;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(183, 110, 121, 0.3);
+    border: 1px solid rgba(255, 182, 193, 0.3);
     color: var(--gold-accent);
     padding: 10px 20px;
     border-radius: 30px;
@@ -47,7 +47,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
 }
 
 .glass-icon-btn:hover {
-    background: rgba(183, 110, 121, 0.2);
+    background: rgba(255, 182, 193, 0.2);
 }
 
 /* Base Sections */
@@ -131,14 +131,14 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
     text-align: center;
 }
 
-/* Perfectly Round Profile Pictures with Rose Gold Glow */
+/* Perfectly Round Profile Pictures with Baby Pink Glow */
 .avatar-wrapper {
     width: 160px; 
     height: 160px; 
     margin: 0 auto 1.5rem auto; 
     border-radius: 50%; 
     border: 3px solid var(--gold-accent); 
-    box-shadow: 0 0 30px rgba(183, 110, 121, 0.3); /* Updated to Rose Gold glow */
+    box-shadow: 0 0 30px rgba(255, 182, 193, 0.3); /* Baby Pink Glow */
     overflow: hidden; 
     display: flex;
     justify-content: center;
@@ -171,7 +171,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
     text-transform: uppercase;
     color: var(--text-secondary);
     margin-bottom: 1.5rem !important;
-    border-bottom: 1px solid rgba(183, 110, 121, 0.2);
+    border-bottom: 1px solid rgba(255, 182, 193, 0.2);
     padding-bottom: 0.5rem;
     display: inline-block;
 }
@@ -184,7 +184,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
     border-radius: 50%;
     overflow: hidden;
     border: 3px solid var(--gold-accent);
-    box-shadow: 0 0 30px rgba(183, 110, 121, 0.2);
+    box-shadow: 0 0 30px rgba(255, 182, 193, 0.2);
 }
 
 .rakhi-img { width: 100%; height: 100%; object-fit: cover; }
@@ -196,8 +196,8 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
     height: 250px;
     margin: 0 auto 2rem;
     border-radius: 50%;
-    background: rgba(183, 110, 121, 0.05); /* Soft Rose Gold Platform */
-    border: 1px dashed rgba(183, 110, 121, 0.4);
+    background: rgba(255, 182, 193, 0.05); /* Soft Pink Platform */
+    border: 1px dashed rgba(255, 182, 193, 0.4);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -230,7 +230,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
 .gold-btn:hover { 
     background: var(--gold-accent); 
     color: var(--bg-color); 
-    box-shadow: 0 0 20px rgba(183, 110, 121, 0.4); 
+    box-shadow: 0 0 20px rgba(255, 182, 193, 0.4); 
 }
 
 .hidden-message { 
