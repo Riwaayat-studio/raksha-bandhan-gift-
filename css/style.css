@@ -1,6 +1,9 @@
+/* =========================================
+   Naya Theme: Deep Navy Blue & Rose Gold
+========================================== */
 :root {
-    --bg-color: #0d0d0f;
-    --gold-accent: #E5C07B;
+    --bg-color: #0A1128;      /* Deep Navy Blue */
+    --gold-accent: #B76E79;   /* Rose Gold */
     --text-primary: #F5F5F7;
     --text-secondary: #A0A0A5;
 }
@@ -14,6 +17,7 @@ body {
     overflow-x: hidden;
 }
 
+/* Background Canvas */
 #webgl-canvas {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
@@ -24,14 +28,14 @@ body {
 h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
 .gold-text { color: var(--gold-accent); font-style: italic; }
 
-/* Audio Button */
+/* Audio Button - Rose Gold Hover */
 .glass-icon-btn {
     position: fixed;
     top: 20px;
     right: 20px;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(229, 192, 123, 0.3);
+    border: 1px solid rgba(183, 110, 121, 0.3);
     color: var(--gold-accent);
     padding: 10px 20px;
     border-radius: 30px;
@@ -43,9 +47,10 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
 }
 
 .glass-icon-btn:hover {
-    background: rgba(229, 192, 123, 0.2);
+    background: rgba(183, 110, 121, 0.2);
 }
 
+/* Base Sections */
 .cinematic-section {
     min-height: 100vh;
     display: flex;
@@ -68,6 +73,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
     60% { transform: translateY(-5px); }
 }
 
+/* Glassmorphism Cards */
 .glass-card {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(16px);
@@ -110,53 +116,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
 
 .caption { font-style: italic; font-size: 1rem; color: var(--text-secondary); }
 
-/* Purani Rakhi Image Wrapper */
-.rakhi-img-wrapper {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto 2rem;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid var(--gold-accent);
-    box-shadow: 0 0 30px rgba(229, 192, 123, 0.2);
-}
-
-.rakhi-img { width: 100%; height: 100%; object-fit: cover; }
-
-/* NAYA: 3D Model Wrapper Styling */
-.model-wrapper {
-    position: relative;
-    width: 250px;
-    height: 250px;
-    margin: 0 auto 2rem;
-    border-radius: 50%;
-    background: rgba(229, 192, 123, 0.05); /* Soft gold glowing platform */
-    border: 1px dashed rgba(229, 192, 123, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.animated-rakhi-model {
-    width: 150%;
-    height: 150%;
-    opacity: 0; /* Shuru mein hidden rahegi */
-    transform: translateY(-150px) scale(0.5); /* Upar aur choti rahegi */
-    background-color: transparent;
-    pointer-events: none; /* Jab tak animation pura na ho click na ho */
-    filter: drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.8));
-}
-
-/* Button & Messages */
-.gold-btn {
-    background: transparent; border: 1px solid var(--gold-accent); color: var(--gold-accent);
-    padding: 1rem 3rem; font-size: 1.2rem; font-family: 'Playfair Display', serif;
-    border-radius: 50px; cursor: pointer; transition: all 0.3s ease; margin: 2rem 0;
-}
-
-.gold-btn:hover { background: var(--gold-accent); color: var(--bg-color); box-shadow: 0 0 20px rgba(229, 192, 123, 0.4); }
-.hidden-message { opacity: 0; transform: translateY(20px); color: var(--gold-accent) !important; font-style: italic; display: none; }
-
 /* Personal Anecdotes Section */
 .anecdotes-container {
     display: flex;
@@ -172,30 +131,32 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
     text-align: center;
 }
 
-/* Naya Profile Image (Avatar) Styling */
+/* Perfectly Round Profile Pictures with Rose Gold Glow */
 .avatar-wrapper {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 1.5rem auto;
-    border-radius: 50%;
-    border: 3px solid var(--gold-accent);
-    padding: 4px; /* Premium gap effect */
-    background: rgba(229, 192, 123, 0.05);
-    box-shadow: 0 0 25px rgba(229, 192, 123, 0.2);
-    overflow: hidden;
-    transition: transform 0.4s ease;
+    width: 160px; 
+    height: 160px; 
+    margin: 0 auto 1.5rem auto; 
+    border-radius: 50%; 
+    border: 3px solid var(--gold-accent); 
+    box-shadow: 0 0 30px rgba(183, 110, 121, 0.3); /* Updated to Rose Gold glow */
+    overflow: hidden; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color);
 }
 
 .avatar-wrapper img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
+    object-fit: cover; 
+    border-radius: 50%; 
+    display: block;
+    transition: transform 0.4s ease;
 }
 
-/* Hover karne par image thodi si pop hogi */
-.anecdote-card:hover .avatar-wrapper {
-    transform: scale(1.1);
+.anecdote-card:hover .avatar-wrapper img {
+    transform: scale(1.08);
 }
 
 .anecdote-card h3 {
@@ -210,8 +171,72 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
     text-transform: uppercase;
     color: var(--text-secondary);
     margin-bottom: 1.5rem !important;
-    border-bottom: 1px solid rgba(229, 192, 123, 0.2);
+    border-bottom: 1px solid rgba(183, 110, 121, 0.2);
     padding-bottom: 0.5rem;
     display: inline-block;
 }
 
+/* Purani Rakhi Image Wrapper */
+.rakhi-img-wrapper {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--gold-accent);
+    box-shadow: 0 0 30px rgba(183, 110, 121, 0.2);
+}
+
+.rakhi-img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 3D Model Wrapper Styling */
+.model-wrapper {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    background: rgba(183, 110, 121, 0.05); /* Soft Rose Gold Platform */
+    border: 1px dashed rgba(183, 110, 121, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.animated-rakhi-model {
+    width: 150%;
+    height: 150%;
+    opacity: 0; 
+    transform: translateY(-150px) scale(0.5); 
+    background-color: transparent;
+    pointer-events: none; 
+    filter: drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.8));
+}
+
+/* Button & Messages */
+.gold-btn {
+    background: transparent; 
+    border: 1px solid var(--gold-accent); 
+    color: var(--gold-accent);
+    padding: 1rem 3rem; 
+    font-size: 1.2rem; 
+    font-family: 'Playfair Display', serif;
+    border-radius: 50px; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+    margin: 2rem 0;
+}
+
+.gold-btn:hover { 
+    background: var(--gold-accent); 
+    color: var(--bg-color); 
+    box-shadow: 0 0 20px rgba(183, 110, 121, 0.4); 
+}
+
+.hidden-message { 
+    opacity: 0; 
+    transform: translateY(20px); 
+    color: var(--gold-accent) !important; 
+    font-style: italic; 
+    display: none; 
+}
